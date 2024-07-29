@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AutoMax a Car Demo Website">
+    <meta name="author" content="Hazem Ahmed" >
+    {% block 'title' %}
+    <title>AutoZoma .List Yout Car Today</title>
+    {% endblock %}
+    <!-- Bootstrap core css -->
+    <link rel="stylesheet" href="{% static 'css\bootstrap.min.css' %}">
+    <!-- custom style css -->
+    <link rel="stylesheet" href="{% static 'css\style.css'%}">
+    <!-- Jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
+
+</head>
+<body>
+    
+    {% if messages %}
+    {% for message in messages %}
+    <div {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}>
+        {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}
+    
+    {% block 'header' %}
+    <header class="p-2 bg-primary text-white w-100 nav-masthead">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-between ">
+            <a href="{% url 'home' %}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <img class="bi me-2" width="52" height="52" src="{% static 'images/logo.png' %}"
+                        aria-label="Bootstrap">
+            </a>
+            {% if request.user.is_authenticated %}
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li>
+                    {% block 'link_beside_logo' %}
+                    <a href="{% url 'profile' %}" class=" nav-link px-2 text-white fs-4" >
+                        {{request.user.username|capfirst}}
+                    </a>
+                    {% endblock %}
+                </li>
+            </ul>
+            <div>
+                <a type="button" href="{% url 'logout' %}" class="btn btn-danger rounded-3">Logout</a>
+            </div>
+            {% else %}
+            <div>
+                <a type="button" href="{% url 'login' %}" class="btn btn-danger rounded-3 ">Login</a>
+            </div>
+            {% endif %}
+            </div>    
+        </div>
+    </header>
+    {% endblock %}
+    
+    {% block 'body' %}
+    {% endblock %}
+    
+</body>
+{%block 'footer'%}
+<footer class="footer p-3 bg-primary text-white w-100 nav-masthead py-5">
+    <div class="container">
+        <p class="float-end mb-1">Powered by <a class="text-white" style="text-decoration: none;" href="https://www.djangoproject.com/">Django</a></p>
+        </p>
+        <p class="mb-1">AutoMax - Best Place To Buy & Sell Cars</p>
+        <p class="mb-0">© Copyright {% now 'Y' %} <a href="" style="text-decoration: none;" class="text-white">AutoZoma</a></p>
+    </div>
+</footer>
+{% endblock %}
+</html>

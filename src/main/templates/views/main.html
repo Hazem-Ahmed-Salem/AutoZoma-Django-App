@@ -1,0 +1,44 @@
+{% extends 'base\base.html' %}
+{% load static %}
+    {% block 'body' %}
+    <div class="d-flex h-100 text-center text-white index">
+        <video autoplay muted loop id="myVideo">
+            <source src="{% static 'videos/bg.mp4' %}" type="video/mp4">
+            <!-- Credit: https://www.pexels.com/@kelly-l-1179532 (Pexels.com)-->
+        </video>
+        <div class="d-flex w-100 h-100 p-3 mx-auto flex-column main-content">
+            <header class="mb-auto">
+                <div>
+                    <h3 class="float-md-start mb-0">autozoma</h3>
+                    <nav class="nav nav-masthead justify-content-center float-md-end ">
+                        {% if request.user.is_authenticated %}
+                        <a class="nav-link active text-light" aria-current="page" href="{% url 'home' %}">Home</a>
+                        {% else %}
+                        <a class="nav-link text-light " href="{% url 'login' %}">Login</a>
+                        {% endif %}
+                    </nav>
+                </div>
+            </header>
+            <main class="px-3">
+                <h2>Find a deal near you!</h2>
+                <p class="lead">Looking to buy or sell a used car? We've got you
+                    covered. </br> AutoZoma is the leading used car marketplace.</p>
+                    {% if not request.user.is_authenticated %}
+                    <p class="lead">
+                    <a href="{% url 'register' %}"
+                        class="btn btn-md btn-secondary fw-bold border-white bg-white rounded-3 px-4 py-4">Register</a>
+                    </p>
+                    {% endif %}
+            </main>
+            <footer class="mt-auto text-white-50">
+                <p>Copyright © {% now 'Y' %} <a href="" style="text-decoration: none;" class="text-white">AutoZoma</a> by <a href="https://www.linkedin.com/in/hazem-ahmed-746520264/"
+                    style="text-decoration: none;" class="text-white">Zoma</a></p>
+            </footer>
+        </div>
+    </div>
+    {% endblock %}
+
+
+    {% block 'footer' %}
+    {% endblock %}
+

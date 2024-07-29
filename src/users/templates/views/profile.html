@@ -1,0 +1,109 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block 'link_beside_logo' %}
+    <a href="{% url 'home' %}" class="fs-4 nav-link px-2 text-light" >
+        Home
+    </a>
+{% endblock %}
+
+
+{% block 'body' %}
+
+<div class="container-fluid text-center py-5">
+    <div class="container px-4 py-5" id="hanging-icons">
+        <div class="row g-4">
+            <div class="col d-flex align-items-start">
+                <div>
+                    <h2 class="mb-3 border-bottom" style="color: black">{{ request.user.username }}</h2>
+                    <img src="{{request.user.profile.photo.url}}" style="object-fit: cover;" class="rounded-circle" alt="" width="400" height="400"  loading="lazy">
+                </div>
+            </div>
+        </div>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-6">
+                    {{user_form|crispy}}
+                    {{profile_form|crispy}}
+                </div>
+                <div class="col-6">
+                    {{location_form|crispy}}
+                </div>
+                <br>
+                <div class="d-grid gap-2 col-6 mx-auto ">
+                <button  class="mt-5 py-3 btn btn-danger rounded-3" type="submit" value="Submit">Save new data</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container px-4">
+        <div class="row g-4 py-5">
+            <div class="col d-flex align-items-start">
+                <div>
+                    <h2 class="mb-3 border-bottom" style="color: black">Your Car Listings</h2>
+                </div>
+            </div>
+        </div>
+        <table class="table table-hover border border-secondary">
+            <thead class="border border-5">
+                <tr class="">
+                    <td>Brand</td>
+                    <td>Model</td>
+                    <td>Engine</td>
+                    <td>Color</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% if user_listings %}
+                
+                
+                {% for listing in user_listings %}
+                <tr>
+                    <td><a style="text-decoration: none; display:block;" href="{% url 'listing' id=listing.id  %}">{{ listing.brand|upper }}</a></td>
+                    <td><a style="text-decoration: none; display:block;" href="{% url 'listing' id=listing.id  %}">{{listing.model|capfirst }}</a></td>
+                    <td><a style="text-decoration: none; display:block;" href="{% url 'listing' id=listing.id  %}">{{listing.engine|capfirst }}</a></td>
+                    <td><a style="text-decoration: none; display:block;" href="{% url 'listing' id=listing.id  %}">{{listing.color|capfirst }}</a></td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <td colspan="4">{{request.user.username|title}} Hasn't Listed Any Car Yet !</td>
+                {% endif %}
+                
+            </tbody>
+        </table>
+    </div>
+    <div class="container px-4">
+        <div class="row g-4 py-5">
+            <div class="col d-flex align-items-start">
+                <div>
+                    <h2 class="mb-3 border-bottom" style="color: black">Liked Car Listings</h2>
+                </div>
+            </div>
+        </div>
+        <table class="table table-hover border border-secondary">
+            <tbody>
+                <thead>
+                    <tr class="border border-5">
+                        <td  >Car Listing</td>
+                        <td>When was Liked</td>
+                    </tr>
+                </thead>
+                {% if user_liked_listings  %}
+                {% for liked_listing in user_liked_listings %}
+                <tr>
+                    <td><a style="text-decoration: none; display:block;" href="{% url 'listing' id=liked_listing.listing.id  %}">{{ liked_listing.listing.brand |title }} {{ liked_listing.listing.model |capfirst }}</a></td>
+                    <td><a style="text-decoration: none; display:block;" href="{% url 'listing' id=liked_listing.listing.id  %}"> {{ liked_listing.like_date }}</a></td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <td colspan="3">{{request.user.username|title}} Hasn't Liked Any Car Listing Yet !</td>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

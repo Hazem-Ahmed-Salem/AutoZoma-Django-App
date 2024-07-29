@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block 'body' %}
+<div class="container-fluid text-center py-5">
+    <div class="container px-4 py-5">
+        <div class="row g-4">
+            <div class="col d-flex align-items-start">
+                <div>
+                    <h2 class="mb-3 border-bottom" style="color: black">Edit</h2>
+                    <img class="rounded-3 d-block mx-lg-auto img-fluid my-3" width="400" src="{{listing.image.url}}" alt="">
+                </div>
+            </div>
+        </div>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-6 my-3" >
+                    {{ listing_form|crispy }}
+                </div>
+                <div class="col-6">
+                    {{ location_form|crispy }}
+                </div>
+            </div>
+            <button class="mx-5 btn btn-md btn-danger rounded-3" type="submit">Save</button>
+            <a href="{% url 'delete' id=listing.id %}" class="mx-5 btn btn-md btn-danger rounded-3">Delete</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
