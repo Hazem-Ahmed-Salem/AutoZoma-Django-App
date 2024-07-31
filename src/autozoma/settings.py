@@ -169,6 +169,8 @@ MEDIA_URL='/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Explicit Logging Package For Debuging
+
 # import logging
 # LOGGING = {
 #     'version': 1,
