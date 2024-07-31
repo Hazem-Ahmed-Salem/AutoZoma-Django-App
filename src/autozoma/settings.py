@@ -29,7 +29,8 @@ env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if env('DjangoAppMode') =='Debug' else False
+DEBUG = False
+#True if env('DjangoAppMode') =='Debug' else False
 print(f'Application Debug mode: {DEBUG}')
 
 ALLOWED_HOSTS = ['*']
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
     'localflavor',
     'crispy_forms',
@@ -57,6 +59,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -150,6 +153,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT =os.path.join( BASE_DIR , "staticfiles")
+STATICFILES_DIRS =[
+    os.path.join(BASE_DIR,"static")
+]
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+
 #Media files {Uploaded files}
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 MEDIA_URL='/media/'
@@ -159,3 +168,20 @@ MEDIA_URL='/media/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# import logging
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['console'],
+#             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+#         },
+#     },
+# }
