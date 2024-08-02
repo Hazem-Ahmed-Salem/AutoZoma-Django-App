@@ -14,14 +14,14 @@ AutoZoma is a Django WebApp where you can list your used car for sale
   <li>Sending Emails using Email service called MailGun using SMTP</li>
 </ul>
 <div>
-<img src="https://github.com/Hazem-Ahmed-Salem/AutoZoma-Django-App/blob/master/previews/1.png" alt="feed example" width="400">
-<img src="https://github.com/Hazem-Ahmed-Salem/AutoZoma-Django-App/blob/master/previews/2.png" alt="feed example" width="400">
-<img src="https://github.com/Hazem-Ahmed-Salem/AutoZoma-Django-App/blob/master/previews/3.png" alt="feed example" width="400">
-<img src="https://github.com/Hazem-Ahmed-Salem/AutoZoma-Django-App/blob/master/previews/4.png" alt="feed example" width="400">
-<img src="https://github.com/Hazem-Ahmed-Salem/AutoZoma-Django-App/blob/master/previews/5.png" alt="feed example" width="400">
-<img src="https://github.com/Hazem-Ahmed-Salem/AutoZoma-Django-App/blob/master/previews/6.png" alt="feed example" width="400">
-<img src="https://github.com/Hazem-Ahmed-Salem/AutoZoma-Django-App/blob/master/previews/7.png" alt="feed example" width="400">
-<img src="https://github.com/Hazem-Ahmed-Salem/AutoZoma-Django-App/blob/master/previews/8.png" alt="feed example" width="400">
+<img src="https://github.com/Hazem-Ahmed-Salem/AutoZoma-Django-App/blob/master/previews/14.png" alt="feed example" width="400">
+<img src="https://github.com/Hazem-Ahmed-Salem/AutoZoma-Django-App/blob/master/previews/15.png" alt="feed example" width="400">
+<img src="https://github.com/Hazem-Ahmed-Salem/AutoZoma-Django-App/blob/master/previews/16.png" alt="feed example" width="400">
+<img src="https://github.com/Hazem-Ahmed-Salem/AutoZoma-Django-App/blob/master/previews/9.png" alt="feed example" width="400">
+<img src="https://github.com/Hazem-Ahmed-Salem/AutoZoma-Django-App/blob/master/previews/10.png" alt="feed example" width="400">
+<img src="https://github.com/Hazem-Ahmed-Salem/AutoZoma-Django-App/blob/master/previews/11.png" alt="feed example" width="400">
+<img src="https://github.com/Hazem-Ahmed-Salem/AutoZoma-Django-App/blob/master/previews/12.png" alt="feed example" width="400">
+<img src="https://github.com/Hazem-Ahmed-Salem/AutoZoma-Django-App/blob/master/previews/13.png" alt="feed example" width="400">
 
 </div>
 </p>
