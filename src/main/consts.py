@@ -17,7 +17,7 @@ CAR_BRANDS=(
     ('volvo', 'Volvo'),
     ('dodge', 'Dodge'),
     ('lotus', 'Lotus'),
-    ('ford','Ford')
+    
     
     
 )
